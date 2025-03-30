@@ -103,16 +103,47 @@ Apply the deployment:
 kubectl apply -f worker-deployment.yaml
 ```
 
-## 6. Execute the Workflow
+## 6. Testing the Deployment
+### Verify Temporal Server is Running
+Check Temporal services:
+```sh
+kubectl get pods -n temporal
+```
+Ensure all pods are in the `Running` state.
+
+### Execute the Workflow
 Run the Python script to start the workflow:
 ```sh
 python start_workflow.py
 ```
+Expected output:
+```
+Workflow result: Hello, Akash from Temporal!
+```
 
-## 7. Monitoring
-- Temporal UI: `http://<K3S-IP>:8080`
-- Prometheus: `http://<K3S-IP>:9090`
-- Grafana: `http://localhost:3000/`
+## 7. Monitoring & Security
+### Temporal UI
+Access the UI at:
+```sh
+http://<K3S-IP>:8080
+```
+
+### Prometheus
+Monitor metrics at:
+```sh
+http://<K3S-IP>:9090
+```
+
+### Grafana
+Visualize monitoring data:
+```sh
+http://localhost:3000/
+```
+
+### Security Best Practices
+- Use Kubernetes Role-Based Access Control (RBAC) to restrict permissions.
+- Ensure Prometheus and Grafana dashboards are not exposed to the internet.
+- Use secrets management for storing sensitive environment variables.
 
 ## Cleanup
 To delete everything:
@@ -123,3 +154,10 @@ To stop K3s:
 ```sh
 sudo systemctl stop k3s
 ```
+
+## Contribution
+Feel free to contribute or report issues.
+
+## License
+This project is open-source under the MIT License.
+
