@@ -29,7 +29,7 @@ pip install temporalio asyncio
 ```
 
 ## Files
-- `workflow.py`: Defines the Temporal workflow.
+- `workflows.py`: Defines the Temporal workflow.
 - `worker.py`: Runs the Temporal worker that listens for tasks.
 - `start_workflow.py`: Executes the workflow via Temporal client.
 
