@@ -64,9 +64,3 @@ client = await Client.connect("your-server-ip:7233")
 - If the worker is not picking up tasks, restart the worker.
 - Use `docker ps` to verify that the Temporal containers are running.
 
-## Contribution
-Feel free to submit pull requests for improvements or fixes.
-
-## License
-This project is open-source and available under the MIT License.
-
