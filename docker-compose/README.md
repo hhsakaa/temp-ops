@@ -51,13 +51,13 @@ docker ps
 ### 5. Access Temporal UI
 Once the containers are up, access Temporal Web UI:
 ```
-http://34.228.166.199:8080/
+http://your-server-ip:8080/
 ```
 
 ### 6. Access Prometheus
 Prometheus UI can be accessed at:
 ```
-http://34.228.166.199:9090/
+http://your-server-ip:9090/
 ```
 
 ### 7. Access Grafana
