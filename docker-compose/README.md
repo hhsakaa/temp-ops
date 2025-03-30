@@ -98,9 +98,3 @@ docker-compose down
 - If Temporal UI is not accessible, ensure that port `8080` is open.
 - If Grafana is not displaying metrics, verify the Prometheus data source connection.
 
-## Contribution
-Feel free to submit pull requests for improvements or fixes.
-
-## License
-This project is open-source and available under the MIT License.
-
