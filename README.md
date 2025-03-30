@@ -31,7 +31,7 @@ pip install temporalio asyncio
 ## Files
 - `workflow.py`: Defines the Temporal workflow.
 - `worker.py`: Runs the Temporal worker that listens for tasks.
-- `client.py`: Executes the workflow via Temporal client.
+- `start_workflow.py`: Executes the workflow via Temporal client.
 
 ## Running the Workflow
 
@@ -44,17 +44,17 @@ python worker.py
 ### 2. Execute the Workflow
 Run the client script to trigger the workflow:
 ```sh
-python client.py
+python start_workflow.py
 ```
 
 ## Expected Output
-When running `client.py`, you should see an output like:
+When running `start_workflow.py`, you should see an output like:
 ```
 Workflow result: Hello, Akash from Temporal!
 ```
 
 ## Configuration
-Update the Temporal server address in `client.py` and `worker.py` if needed:
+Update the Temporal server address in `start_workflow.py` and `worker.py` if needed:
 ```python
 client = await Client.connect("your-server-ip:7233")
 ```
