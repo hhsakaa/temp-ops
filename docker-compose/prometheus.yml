@@ -1,0 +1,11 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'temporal'
+    static_configs:
+      - targets: ['temporal:8000']
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['34.228.166.199:9090']
+
