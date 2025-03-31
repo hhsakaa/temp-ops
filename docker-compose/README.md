@@ -67,16 +67,47 @@ http://localhost:3000/
 ```
 (Default login: `admin` / `admin`)
 
-### 8. Configure Monitoring
-- Prometheus is already set up to scrape Temporal metrics from `temporal:8000`.
-- To configure Grafana, add Prometheus as a data source:
+## Monitoring Setup
+### 8. Configure Prometheus
+Prometheus is configured to scrape Temporal metrics from `temporal:8000`. If necessary, update `prometheus.yml`:
+```yaml
+scrape_configs:
+  - job_name: 'temporal'
+    static_configs:
+      - targets: ['temporal:8000']
+```
+Restart Prometheus to apply changes:
+```sh
+docker-compose restart prometheus
+```
+
+### 9. Configure Grafana Dashboards
+- Add Prometheus as a data source:
   1. Open Grafana and log in.
   2. Go to "Configuration" > "Data Sources".
   3. Add a new Prometheus data source with the URL: `http://prometheus:9090`
   4. Save and test the connection.
-  5. Import dashboards to visualize Temporal metrics.
+  5. Import pre-built Temporal dashboards for visualization.
 
-### 9. Stopping the Services
+### 10. Set Up Alerts in Grafana
+To create alerts in Grafana:
+1. Open Grafana and navigate to "Alerting" > "Rules".
+2. Click "Create Alert Rule".
+3. Set up conditions such as high workflow failures.
+4. Configure notification channels (e.g., Slack, Email, Webhooks).
+
+## Security Setup
+### 11. Secure Temporal Services
+- Use environment variables for credentials instead of hardcoding them.
+- Restrict external access to Temporal services using firewall rules.
+- Enable authentication for the Temporal UI.
+
+### 12. Secure Prometheus & Grafana
+- Set up authentication for Grafana dashboards.
+- Limit Prometheus access to trusted IP addresses.
+- Encrypt network traffic using TLS for secure communication.
+
+### 13. Stopping the Services
 To stop all running services:
 ```sh
 docker-compose down
@@ -87,7 +118,11 @@ docker-compose down
 /
 ├── docker-compose.yml
 ├── prometheus.yml
-└── README.md
+├── README.md
+└── workflows/
+    ├── worker.py
+    ├── workflows.py
+    ├── start_workflow.py
 ```
 
 ## Troubleshooting
@@ -97,4 +132,7 @@ docker-compose down
   ```
 - If Temporal UI is not accessible, ensure that port `8080` is open.
 - If Grafana is not displaying metrics, verify the Prometheus data source connection.
+
+## Contribution
+Feel free to submit issues or pull requests to improve this setup!
 
